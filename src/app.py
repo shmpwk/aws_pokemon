@@ -26,6 +26,13 @@ class Bashoutter(core.Stack):
             removal_policy=core.RemovalPolicy.DESTROY
         )
 
+        common_params = {
+                "runtime": _lambda.Runtime.PYTHON_3_7,
+                "environment": {
+                    "TABLE_NAME": table.table_name
+                    }
+                }
+
 
         # <3>
         # define Lambda functions
@@ -105,8 +112,7 @@ class Bashoutter(core.Stack):
             string_value=api.url
         )
 
-        # Output parameters
-        core.CfnOutput(self, 'BucketUrl', value=bucket.bucket_website_domain_name)
+
 
 app = core.App()
 Bashoutter(
