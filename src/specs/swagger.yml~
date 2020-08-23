@@ -2,12 +2,12 @@ openapi: 3.0.0
 info:
   title: Bashoutter API
   version: 0.1.0
-  description: https://github.com/shmpwk/aws_pokemon
+  description: https://gitlab.com/tomomano/intro-aws
 
 paths:
-  /pokemon:
+  /haiku:
     get:
-      summary: Show my pokemon
+      summary: Get a list of haiku
       responses:
         200:
           description: OK
@@ -18,21 +18,23 @@ paths:
                 items:
                   type: object
                   properties:
-                    pokemon_number:
+                    item_id:
                       type: string
-                    name:
+                    username:
                       type: string
-                    first_move:
+                    first:
                       type: string
-                    second_move:
+                    second:
                       type: string
-                    level:
+                    third:
+                      type: string
+                    likes:
                       type: integer
                     created_at:
                       type: string
                       format: date-time
     post:
-      summary: Get new pokemon
+      summary: Post a new haiku
       requestBody:
         required: true
         content:
@@ -42,28 +44,30 @@ paths:
               properties:
                 username:
                   type: string
-                first_move:
+                first:
                   type: string
-                second_move:
+                second:
+                  type: string
+                third:
                   type: string
       responses:
         201:
           description: OK
-  /pokemon/{pokemon_number}:
+  /haiku/{item_id}:
     parameters:
       - in: path
-        name: pokemon_number
+        name: item_id
         required: true
-        description: ID of the selected pokemon
+        description: ID of the selected haiku
         schema:
           type: string
     patch:
-      summary: Level up a selected pokemon
+      summary: Add like to a selected haiku
       responses:
         200:
           description: OK
     delete:
-      summary: Bye a pokemon
+      summary: Delete a haiku
       responses:
         204:
           description: Resource deleted successfully
