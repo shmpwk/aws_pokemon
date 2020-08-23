@@ -27,18 +27,18 @@ class Bashoutter(core.Stack):
         )
 
         # <2>
-        bucket = s3.Bucket(
-            self, "Bashoutter-Bucket",
-            website_index_document="index.html",
-            public_read_access=True,
-            removal_policy=core.RemovalPolicy.DESTROY
-        )
-        s3_deploy.BucketDeployment(
-            self, "BucketDeployment",
-            destination_bucket=bucket,
-            sources=[s3_deploy.Source.asset("./gui/dist")],
-            retain_on_delete=False,
-        )
+        #bucket = s3.Bucket(
+        #    self, "Bashoutter-Bucket",
+        #    website_index_document="index.html",
+        #    public_read_access=True,
+        #    removal_policy=core.RemovalPolicy.DESTROY
+        #)
+        #s3_deploy.BucketDeployment(
+        #    self, "BucketDeployment",
+        #    destination_bucket=bucket,
+        #    sources=[s3_deploy.Source.asset("./gui/dist")],
+        #    retain_on_delete=False,
+        #)
 
         common_params = {
             "runtime": _lambda.Runtime.PYTHON_3_7,
