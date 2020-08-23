@@ -126,7 +126,7 @@ class Bashoutter(core.Stack):
         )
 
         # Output parameters
-        core.CfnOutput(self, 'BucketUrl', value=bucket.bucket_website_domain_name)
+        #core.CfnOutput(self, 'BucketUrl', value=bucket.bucket_website_domain_name)
 
 app = core.App()
 Bashoutter(
