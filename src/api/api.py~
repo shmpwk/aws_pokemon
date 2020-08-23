@@ -44,23 +44,22 @@ def get_pokemon(event, context):
             raise ValueError("Invalid request. The request body is missing!")
         body = json.loads(body)
 
-        for key in ["username", "first", "second", "third"]:
+        for key in ["name", "first_move ", "second_move"]:
             if not body.get(key):
                 raise ValueError(f"{key} is empty")
 
         item = {
-            "item_id": uuid.uuid4().hex,
-            "username": body["username"],
-            "first": body["first"],
-            "second": body["second"],
-            "third": body["third"],
-            "likes": 0,
+            "pokemon_number": uuid.uuid4().hex,
+            "name": body["name"],
+            "first_move": body["first_move"],
+            "second_move": body["second_move"],
+            "level": 0,
             "created_at": datetime.now(timezone.utc).isoformat(timespec="seconds")
         }
         response = table.put_item(Item=item)
 
         status_code = 201
-        resp = {"description": "Successfully added a new haiku"}
+        resp = {"description": "Successfully get pokemon"}
     except ValueError as e:
         status_code = 400
         resp = {"description": f"Bad request. {str(e)}"}
@@ -75,17 +74,17 @@ def get_pokemon(event, context):
 
 def level_up(event, context):
     """
-    handler for LEVELUP /pokemon/{item_id}
+    handler for LEVELUP /pokemon/{pokemon_number}
     """
     try:
         path_params = event.get("pathParameters", {})
-        item_id = path_params.get("item_id", "")
-        if not item_id:
-            raise ValueError("Invalid request. The path parameter 'item_id' is missing")
+        pokemon_number = path_params.get("pokemon_number", "")
+        if not pokemon_number:
+            raise ValueError("Invalid request. The path parameter 'pokemon_number' is missing")
         
         response = table.update_item(
-            Key={"item_id": item_id},
-            UpdateExpression=f"SET likes = likes + :inc",
+            Key={"pokemon_number": pokemon_number},
+            UpdateExpression=f"SET level = level + :inc",
             ExpressionAttributeValues={
                 ':inc': 1,
             }
@@ -107,16 +106,16 @@ def level_up(event, context):
 
 def bye_pokemon(event, context):
     """
-    handler for BYE /pokemon/{item_id}
+    handler for BYE /pokemon/{pokemon_number}
     """
     try:
         path_params = event.get("pathParameters", {})
-        item_id = path_params.get("item_id", "")
-        if not item_id:
-            raise ValueError("Invalid request. The path parameter 'item_id' is missing")
+        pokemon_number = path_params.get("pokemon_number", "")
+        if not pokemon_number:
+            raise ValueError("Invalid request. The path parameter 'pokemon_number' is missing")
         
         response = table.delete_item(
-            Key={"item_id": item_id}
+            Key={"pokemon_number": pokemon_number}
         )
 
         status_code = 204
