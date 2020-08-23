@@ -16,7 +16,7 @@ class DecimalEncoder(json.JSONEncoder):
             return float(o)
         return super(DecimalEncoder, self).default(o)
 
-def show_pokemon, context):
+def show_pokemon(event, context):
     """
     handler for SHOW /pokemon
     """
@@ -60,7 +60,7 @@ def get_pokemon(event, context):
         response = table.put_item(Item=item)
 
         status_code = 201
-        resp = {"description": "Successfully added a new haiku"}
+        resp = {"description": "Successfully get pokemon"}
     except ValueError as e:
         status_code = 400
         resp = {"description": f"Bad request. {str(e)}"}

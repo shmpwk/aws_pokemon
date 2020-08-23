@@ -76,21 +76,21 @@ class Bashoutter(core.Stack):
 
         pokemon = api.root.add_resource("pokemon")
         pokemon.add_method(
-            "GET",
+            "SHOW",
             apigw.LambdaIntegration(show_lambda)
         )
         pokemon.add_method(
-            "POST",
+            "GET",
             apigw.LambdaIntegration(get_lambda)
         )
 
         pokemon_item_id = pokemon.add_resource("{item_id}")
         pokemon_item_id.add_method(
-            "PATCH",
+            "LEVELUP",
             apigw.LambdaIntegration(levelup_lambda)
         )
         pokemon_item_id.add_method(
-            "DELETE",
+            "BYE",
             apigw.LambdaIntegration(goodbye_lambda)
         )
 
