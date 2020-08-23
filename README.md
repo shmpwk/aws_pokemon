@@ -36,10 +36,38 @@ You can get your end point when deploing.
 End point is written like `Bashoutter.BashoutterApiEndpoint = XXXXXXXXX`.
 Change XXXXXXXXXX to your end point.
 ```
-export ENDPOINT_URL="https:XXXXXXXXXXXXX.execute-api.ap-northeast-1.amazonaws.com/prod/"
+$ export ENDPOINT_URL="https:XXXXXXXXXXXXX.execute-api.ap-northeast-1.amazonaws.com/prod/"
 ```
 
+#### SHOW YOUR POKEMON
+```
+$ http GET "${ENDPOINT_URL}/pokemon"
 
+```
+
+#### GET NEW POKEMON
+
+```
+$ http POST "${ENDPOINT_URL}/pokemon" name="XXXXX"  first_move="XXXXXX" second_move="XXXXX"      
+```
+For example,
+```
+$ http POST "${ENDPOINT_URL}/pokemon" name="pikachu"  first_move="1000000bolt" second_move="tackle"
+```
+
+#### LEVEL UP 
+XXXXX is pokemon_number
+
+```
+$ http PATCH "${ENDPOINT_URL}/pokemon/XXXXX"
+```
+
+#### SAY GOOD BYE TO POKEMON
+XXXXX is pokemon_number
+```
+$ http DELETE "${ENDPOINT_URL}/pokemon/XXXXX"
+
+```
 
 ## Testing API:
 
