@@ -15,8 +15,10 @@ RUN cd /opt \
 
 RUN npm install -g aws-cdk@1.30
 
-RUN cd /root \
-    && git clone https://github.com/shmpwk/aws_pokemon
+RUN apt install vim
+
+#RUN cd /root \
+#    && git clone https://github.com/shmpwk/aws_pokemon
 
 # Make command line prettier...
 RUN echo "alias ls='ls --color=auto'" >> /root/.bashrc
