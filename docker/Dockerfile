@@ -15,7 +15,6 @@ RUN cd /opt \
 
 RUN npm install -g aws-cdk@1.30
 
-RUN apt install vim
 
 #RUN cd /root \
 #    && git clone https://github.com/shmpwk/aws_pokemon
