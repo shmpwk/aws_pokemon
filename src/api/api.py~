@@ -16,9 +16,9 @@ class DecimalEncoder(json.JSONEncoder):
             return float(o)
         return super(DecimalEncoder, self).default(o)
 
-def show_pokemon, context):
+def get_haiku(event, context):
     """
-    handler for SHOW /pokemon
+    handler for GET /haiku
     """
     try:
         response = table.scan()
@@ -34,9 +34,9 @@ def show_pokemon, context):
         "body": json.dumps(resp, cls=DecimalEncoder)
     }
 
-def get_pokemon(event, context):
+def post_haiku(event, context):
     """
-    handler for GET /pokemon
+    handler for POST /haiku
     """
     try:
         body = event.get("body")
@@ -73,9 +73,9 @@ def get_pokemon(event, context):
         "body": json.dumps(resp)
     }
 
-def level_up(event, context):
+def patch_haiku(event, context):
     """
-    handler for LEVELUP /pokemon/{item_id}
+    handler for PATCH /haiku/{item_id}
     """
     try:
         path_params = event.get("pathParameters", {})
@@ -105,9 +105,9 @@ def level_up(event, context):
         "body": json.dumps(resp)
     }
 
-def bye_pokemon(event, context):
+def delete_haiku(event, context):
     """
-    handler for BYE /pokemon/{item_id}
+    handler for DELETE /haiku/{item_id}
     """
     try:
         path_params = event.get("pathParameters", {})
