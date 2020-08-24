@@ -8,19 +8,6 @@ Docker (version?)
 
 ## Get Start
 
-### Clone and build & run docker
-```
-$ git clone https://github.com/shmpwk/aws_pokemon
-
-$ docker build -t aws_pokemon .
-$ docker run --rm -it aws_pokemon
-```
-
-### Clone in docker (Todo : should be written in docker.)
-```
-$ git clone https://github.com/shmpwk/aws_pokemon
-```
-
 ### Create venv and install dependent libraries
 ```
 $ python3 -m venv .env

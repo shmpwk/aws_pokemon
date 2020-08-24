@@ -44,7 +44,7 @@ def get_pokemon(event, context):
             raise ValueError("Invalid request. The request body is missing!")
         body = json.loads(body)
 
-        for key in ["name", "first_move ", "second_move"]:
+        for key in ["name", "first_move", "second_move"]:
             if not body.get(key):
                 raise ValueError(f"{key} is empty")
 
