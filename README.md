@@ -82,6 +82,13 @@ $ http DELETE "${ENDPOINT_URL}/pokemon/XXXXX"
 
 ```
 
+## ATTENTION
+When you finish playing, don't forget 
+```bash
+$ cdk destroy
+```
+otherwise, you will go bankrupt(?).
+
 ## Testing API:
 
 ```bash
