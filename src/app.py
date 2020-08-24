@@ -18,7 +18,7 @@ class Bashoutter(core.Stack):
         table = ddb.Table(
             self, "Bashoutter-Table",
             partition_key=ddb.Attribute(
-                name="item_id",
+                name="pokemon_number",
                 type=ddb.AttributeType.STRING
             ),
             billing_mode=ddb.BillingMode.PAY_PER_REQUEST,
@@ -84,12 +84,12 @@ class Bashoutter(core.Stack):
             apigw.LambdaIntegration(get_lambda)
         )
 
-        pokemon_item_id = pokemon.add_resource("{item_id}")
-        pokemon_item_id.add_method(
+        pokemon_number = pokemon.add_resource("{pokemon_number}")
+        pokemon_number.add_method(
             "PATCH",
             apigw.LambdaIntegration(levelup_lambda)
         )
-        pokemon_item_id.add_method(
+        pokemon_number.add_method(
             "DELETE",
             apigw.LambdaIntegration(goodbye_lambda)
         )
