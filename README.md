@@ -4,8 +4,8 @@
 This repo is for my exercise in building AWS serverless architecture. 
 
 ## Requrement
-Docker (version?)
-
+- Docker (version?)
+- AWS account
 ## Get Start
 
 ### Clone and build & run docker
